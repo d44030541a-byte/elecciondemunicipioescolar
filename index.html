@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MunicipioEscolar 2026 | Sistema de Voto Electrónico Escolar</title>
+  <meta name="description" content="Software autónomo de votación electrónica para Municipios Escolares del Perú. 100% Offline, seguro y conforme a la RVM N° 046-2025-MINEDU.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ms-blue: #0078D4;         /* Azul Microsoft */
+      --ms-blue-hover: #106EBE;   /* Azul Microsoft Oscuro */
+      --primary: #1E3A8A;
+      --dark: #0F172A;
+      --gray-light: #F8FAFC;
+      --gray-border: #E2E8F0;
+      --text-muted: #64748B;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      background-color: var(--gray-light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    /* Encabezado con Azul Microsoft */
+    header {
+      background-color: var(--ms-blue);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.95rem 1.5rem;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    .logo {
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: #FFFFFF;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    /* Distribución en dos columnas */
+    .hero-split {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+    .hero-content {
+      text-align: left;
+    }
+    .badge {
+      display: inline-block;
+      background: #DBEAFE;
+      color: var(--ms-blue);
+      padding: 0.4rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+    .hero-content h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--dark);
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
+    }
+    .hero-content p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+    .btn-demo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--ms-blue);
+      color: white;
+      font-size: 1.05rem;
+      font-weight: 600;
+      padding: 0.9rem 1.85rem;
+      border-radius: 8px;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0, 120, 212, 0.3);
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-demo:hover {
+      background: var(--ms-blue-hover);
+      transform: translateY(-2px);
+    }
+
+    /* Contenedor Responsivo del Video de YouTube */
+    .video-frame-container {
+      background: #000;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--gray-border);
+      box-shadow: 0 16px 32px -6px rgba(0, 0, 0, 0.15);
+      position: relative;
+      padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
+      height: 0;
+    }
+    .video-frame-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* Sección de Requisitos de Instalación */
+    .specs-section {
+      background: white;
+      border-top: 1px solid var(--gray-border);
+      border-bottom: 1px solid var(--gray-border);
+      padding: 4.5rem 1.5rem;
+    }
+    .specs-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-title {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .section-title h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--dark);
+    }
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+    .spec-item {
+      padding: 1.25rem;
+      border-radius: 8px;
+      background: var(--gray-light);
+      border-left: 4px solid var(--ms-blue);
+    }
+    .spec-item h4 {
+      font-size: 1rem;
+      margin-bottom: 0.35rem;
+      color: var(--dark);
+    }
+    .spec-item p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Pie de Página */
+    footer {
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      background: white;
+    }
+
+    @media (max-width: 880px) {
+      .hero-split {
+        grid-template-columns: 1fr;
+        padding-top: 2.5rem;
+        gap: 2rem;
+      }
+      .hero-content {
+        text-align: center;
+      }
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+      .btn-demo {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo">🗳️ MunicipioEscolar 2026</a>
+    </div>
+  </header>
+
+  <section class="hero-split">
+    <div class="hero-content">
+      <span class="badge">Resolución Viceministerial N° 046-2025-MINEDU</span>
+      <h1>Sistema de Voto Electrónico Escolar</h1>
+      <p>Moderniza la elección escolar de tu colegio: software táctil autónomo, 100% offline y de máxima seguridad. Los estudiantes votan en segundos con su DNI, en una urna con cifrado militar y con generación inmediata del Acta Oficial de Escrutinio en PDF con cuadre matemático perfecto.</p>
+      <a href="mailto:cuencacolan@gmail.com?subject=Solicitud%20de%20Demostraci%C3%B3n%20-%20MunicipioEscolar%202026&body=Hola%2C%20deseo%20solicitar%20una%20demostraci%C3%B3n%20del%20sistema%20para%20mi%20colegio." class="btn-demo">
+        ✉️ Solicita tu demo
+      </a>
+    </div>
+
+    <div class="video-frame-container">
+      <iframe 
+        src="https://www.youtube.com/embed/UPXff4B_Nxs?rel=0" 
+        title="MunicipioEscolar 2026 Demo" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        allowfullscreen>
+      </iframe>
+    </div>
+  </section>
+
+  <section class="specs-section">
+    <div class="specs-container">
+      <div class="section-title">
+        <h2>Requisitos para la Instalación</h2>
+        <p style="color: var(--text-muted);">Ejecutable único y autónomo (Single-File). No requiere conexión a Internet ni instalación de servidores.</p>
+      </div>
+      <div class="specs-grid">
+        <div class="spec-item">
+          <h4>Sistema Operativo</h4>
+          <p>Windows 10 o Windows 11 (64 bits). Compatible con PCs de escritorio, laptops y pantallas táctiles 2 en 1.</p>
+        </div>
+        <div class="spec-item">
+          <h4>Conectividad</h4>
+          <p>100% Offline. Garantiza privacidad total y operatividad en colegios sin acceso a internet.</p>
+        </div>
+        <div class="spec-item">
+          <h4>Memoria y Procesador</h4>
+          <p>Mínimo 2 GB de memoria RAM y procesador Intel Celeron / Core i3 o equivalente.</p>
+        </div>
+        <div class="spec-item">
+          <h4>Seguridad y Persistencia</h4>
+          <p>Base de datos SQLite local cifrada con SQLCipher (AES-256) mediante Windows DPAPI.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 MunicipioEscolar 2026. Diseñado conforme a los lineamientos de la RVM N° 046-2025-MINEDU.</p>
+  </footer>
+
+</body>
+</html>
